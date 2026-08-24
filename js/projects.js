@@ -27,4 +27,18 @@ window.PROJECTS = [
     github: "https://github.com/ZhedongHu/Diary",
     demo: "https://zhedonghu.github.io/Diary"
   },
+  {
+    icon: "👤",
+    title: {
+      zh: "关于我",
+      en: "About me"
+    },
+    description: {
+      zh: "这是我的自我介绍",
+      en: "Something about me."
+    },
+    tags: ["Markdown"],
+    github: "https://github.com/ZhedongHu/ZhedongHu",
+    demo: "https://github.com/ZhedongHu/ZhedongHu/blob/main/README.md"
+  },
 ];
