@@ -41,4 +41,18 @@ window.PROJECTS = [
     github: "https://github.com/ZhedongHu/ZhedongHu",
     demo: "https://github.com/ZhedongHu/ZhedongHu/blob/main/README.md"
   },
+   {
+    icon: "🔢",
+    title: {
+      zh: "2048小游戏",
+      en: "2048Game"
+    },
+    description: {
+      zh: "一个经典的数字消除游戏",
+      en: "A number merging puzzle game."
+    },
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/ZhedongHu/2048",
+    demo: "https://zhedonghu.github.io/2048"
+  },
 ];
