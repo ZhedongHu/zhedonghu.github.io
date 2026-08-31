@@ -95,7 +95,7 @@ window.PROJECTS = [
     tags: ["HTML","CSS","JavaScript"],
     github: "https://github.com/ZhedongHu/simple-browser-homepage",
     demo: "https://zhedonghu.github.io/simple-browser-homepage"
-  }
+  },
   {
     icon: "🐍",
     title: {
@@ -109,5 +109,5 @@ window.PROJECTS = [
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/ZhedongHu/snake/",
     demo: "https://zhedonghu.github.io/snake/"
-  },
+  }
 ];
