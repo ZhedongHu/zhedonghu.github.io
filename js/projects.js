@@ -109,5 +109,19 @@ window.PROJECTS = [
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/ZhedongHu/snake/",
     demo: "https://zhedonghu.github.io/snake/"
-  }
+  },
+  {
+    icon: "🖌️",
+    title: {
+      zh: "字符画设计器",
+      en: "AICILL art"
+    },
+    description: {
+      zh: "你可以通过涂抹色块的方式制作独一无二的字符画",
+      en: "Make AICILL art"
+    },
+    tags: ["HTML", "CSS", "JavaScript","Art"],
+    github: "https://github.com/ZhedongHu/AICILL-art",
+    demo: "https://zhedonghu.github.io/AICILL-art"
+  },
 ];
