@@ -55,4 +55,31 @@ window.PROJECTS = [
     github: "https://github.com/ZhedongHu/2048",
     demo: "https://zhedonghu.github.io/2048"
   },
+     {
+    icon: "♾️",
+    title: {
+      zh: "猜数字游戏",
+      en: "Guess number"
+    },
+    description: {
+      zh: "一个极简猜数字游戏",
+      en: "A guess number game."
+    },
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/ZhedongHu/guess-number",
+    demo: "https://zhedonghu.github.io/guess-number"
+  },
+     {
+    icon: "♥️",
+    title: {
+      zh: "计算机健康状况检查",
+      en: "Computer health check"
+    },
+    description: {
+      zh: "仅供娱乐，没有任何实际意义的计算机健康状况检查",
+      en: "For entertainment purposes only, no real meaning"
+    },
+    tags: ["C"],
+    github: "https://github.com/ZhedongHu/computer-health-check",
+  },
 ];
