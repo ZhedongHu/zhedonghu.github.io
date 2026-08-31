@@ -96,4 +96,18 @@ window.PROJECTS = [
     github: "https://github.com/ZhedongHu/simple-browser-homepage",
     demo: "https://zhedonghu.github.io/simple-browser-homepage"
   }
+  {
+    icon: "🐍",
+    title: {
+      zh: "贪吃蛇",
+      en: "Snake game"
+    },
+    description: {
+      zh: "经典贪吃蛇游戏",
+      en: "The snake game."
+    },
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/ZhedongHu/snake/",
+    demo: "https://zhedonghu.github.io/snake/"
+  },
 ];
