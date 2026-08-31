@@ -55,7 +55,7 @@ window.PROJECTS = [
     github: "https://github.com/ZhedongHu/2048",
     demo: "https://zhedonghu.github.io/2048"
   },
-     {
+  {
     icon: "♾️",
     title: {
       zh: "猜数字游戏",
@@ -69,7 +69,7 @@ window.PROJECTS = [
     github: "https://github.com/ZhedongHu/guess-number",
     demo: "https://zhedonghu.github.io/guess-number"
   },
-     {
+  {
     icon: "♥️",
     title: {
       zh: "计算机健康状况检查",
@@ -82,4 +82,18 @@ window.PROJECTS = [
     tags: ["C"],
     github: "https://github.com/ZhedongHu/computer-health-check",
   },
+  {
+    icon: "🏠",
+    title: {
+      zh: "浏览器主页",
+      en: "Browser homepage"
+    },
+    description: {
+      zh: "一个简洁的浏览器主页",
+      en: "A simple browser homepage"
+    },
+    tags: ["HTML","CSS","JavaScript"],
+    github: "https://github.com/ZhedongHu/simple-browser-homepage",
+    demo: "https://zhedonghu.github.io/simple-browser-homepage"
+  }
 ];
