@@ -1,33 +1,284 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>胡哲栋 | Zhedong Hu</title>
-  <meta name="description" content="海内存知己，天涯若比邻。胡哲栋的个人主页">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>胡哲栋 | Zhedong Hu</title>
+<meta name="description" content="胡哲栋的个人主页 —— 星辰大海，逐梦前行。" />
+<meta name="color-scheme" content="dark" />
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="胡哲栋 | Zhedong Hu" />
+<meta property="og:description" content="海内存知己，天涯若比邻 —— 星辰大海，逐梦前行。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' fill='%234cc9f0' text-anchor='middle'%3EZH%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-  <!-- 背景动画 -->
-  <canvas id="bg-canvas"></canvas>
-  <div class="bg-grid"></div>
+<body class="welcome-open">
 
-  <!-- 首页 Hero -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="zh">海内存知己，天涯若比邻</span>
-      </h1>
-      <p class="hero-subtitle">
-        <span class="zh">幸会👏！欢迎来到我的个人主页<br>星辰大海，逐梦前行。七年级的故事即将开始，这是一段全新的旅程，我将全力以赴。<br>祝所有同学：新学期，身体健康，学业有成！</span>
-      </p>
+<!-- ===================== 欢迎页 ===================== -->
+<div class="welcome" id="welcome">
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-a"></div>
+    <div class="bg-glow glow-b"></div>
+  </div>
+
+  <div class="wrap welcome-inner">
+    <div class="w-logo">ZH</div>
+    <p class="w-hello" data-i18n="wHello">你好，我是</p>
+    <h1 class="w-name" id="wName">胡哲栋</h1>
+    <p class="w-latin" id="wLatin">ZHEDONG HU</p>
+    <div class="w-rule"></div>
+    <p class="w-motto" id="wMotto">海内存知己，天涯若比邻</p>
+
+    <button class="btn btn-primary w-enter" id="welcomeEnter" type="button">
+      <span data-i18n="wEnter">进入主页</span><em>→</em>
+    </button>
+    <p class="w-hint" data-i18n="wHint">按 Enter 键或点击任意处进入</p>
+  </div>
+
+  <div class="w-foot">
+    <span class="w-tag" data-i18n="wTag">个人主页 · 2026</span>
+    <div class="lang-switch" data-lang-switch>
+      <button type="button" data-lang="zh">中</button>
+      <button type="button" data-lang="en">EN</button>
+      <span class="lang-thumb"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 顶部临时横幅 ===================== -->
+<!-- 内容、开关、链接全部在 data/site.js 的 banner 里配置 -->
+<div class="announce" id="announce" hidden>
+  <div class="wrap announce-inner">
+    <span class="announce-tag" id="announceTag"></span>
+    <p class="announce-text" id="announceText"></p>
+    <a class="announce-link" id="announceLink" href="#"><span id="announceLinkText"></span><span>→</span></a>
+    <button class="announce-close" id="announceClose" type="button" aria-label="Close">×</button>
+  </div>
+</div>
+
+<!-- ===================== 顶部进度 & 导航 ===================== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- 全站背景（网格 + 光晕） -->
+<div class="bg-layer page-bg" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-a"></div>
+  <div class="bg-glow glow-b"></div>
+  <div class="bg-glow glow-c"></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">ZH</span>
+      <span class="brand-text">
+        <strong data-i18n-html="brandName">胡哲栋</strong>
+        <em data-i18n="brandSub">ZHEDONG HU</em>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="navAbout">关于我</a>
+      <a href="#timeline" data-i18n="navTimeline">成长轨迹</a>
+      <a href="#skills" data-i18n="navSkills">编程技能</a>
+      <a href="#interests" data-i18n="navInterests">兴趣与作品</a>
+      <a href="#notes" data-i18n="navNotes">趣闻录</a>
+      <a href="#contact" data-i18n="navContact">联系我</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-switch" data-lang-switch>
+        <button type="button" data-lang="zh">中</button>
+        <button type="button" data-lang="en">EN</button>
+        <span class="lang-thumb"></span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="bg-layer hero-bg" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-glow glow-a"></div>
+      <div class="bg-glow glow-b"></div>
+      <div class="bg-glow glow-c"></div>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badge reveal">
+          <span class="dot"></span>
+          <span data-i18n="heroBadge">七年级 · 新学期进行中</span>
+        </div>
+
+        <h2 class="hero-title reveal" id="heroTitle"></h2>
+
+        <p class="hero-motto reveal" id="heroMotto"></p>
+        <p class="hero-desc reveal" id="heroDesc"></p>
+
+        <div class="hero-wish reveal">
+          <span class="wish-mark">“</span>
+          <p id="heroWish"></p>
+        </div>
+
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="#interests" data-i18n="ctaWorks">看看我的作品</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="ctaContact">和我联系</a>
+        </div>
+      </div>
+
+      <!-- 终端卡片：右侧装饰，内容取自 data/site.js -->
+      <aside class="term reveal" id="termCard">
+        <div class="term-bar">
+          <span class="tdot d1"></span><span class="tdot d2"></span><span class="tdot d3"></span>
+          <em>zhedonghu — profile</em>
+        </div>
+        <div class="term-body" id="termBody">
+          <p class="tline"><span class="tp">$</span> whoami</p>
+          <p class="tout tname" id="termWho"></p>
+          <p class="tline"><span class="tp">$</span> cat profile.json</p>
+          <pre class="tout" id="termJson"></pre>
+          <!-- 交互区：点击终端后可在下方输入，输入 sudo 有彩蛋 -->
+          <p class="tline term-hint" data-i18n="termHint"></p>
+          <div class="term-log" id="termLog" aria-live="polite"></div>
+          <p class="tline term-prompt">
+            <span class="tp">$</span><span id="termLive" class="term-live"></span><span class="cursor"></span>
+            <input id="termInput" class="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="终端输入" />
+          </p>
+        </div>
+      </aside>
     </div>
   </section>
 
-<script>
-        let jumpTimer = setTimeout(() => {
-            window.location.href = "https://zhedonghu.github.io/homepage.html";
-        }, 3000);
-</script>
+  <!-- ===================== 统计条 ===================== -->
+  <section class="statbar">
+    <div class="wrap">
+      <div class="statbar-grid" id="heroStats"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 关于我 ===================== -->
+  <section id="about" class="section">
+    <div class="wrap section-grid">
+      <aside class="section-aside reveal">
+        <span class="sec-num" data-i18n="aboutEyebrow">01 — ABOUT</span>
+        <h2 class="sec-title" data-i18n="aboutTitle">关于我</h2>
+        <p class="sec-sub" data-i18n="aboutSub"></p>
+      </aside>
+      <div class="section-main">
+        <div class="prose reveal" id="aboutText"></div>
+        <div class="tag-row reveal" id="aboutTags"></div>
+        <div class="info-table reveal" id="infoTable"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 成长轨迹 ===================== -->
+  <section id="timeline" class="section">
+    <div class="wrap section-grid">
+      <aside class="section-aside reveal">
+        <span class="sec-num" data-i18n="timeEyebrow">02 — TIMELINE</span>
+        <h2 class="sec-title" data-i18n="timeTitle">成长轨迹</h2>
+        <p class="sec-sub" data-i18n="timeSub"></p>
+      </aside>
+      <div class="section-main">
+        <ol class="timeline" id="timelineList"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 编程技能 ===================== -->
+  <section id="skills" class="section">
+    <div class="wrap section-grid">
+      <aside class="section-aside reveal">
+        <span class="sec-num" data-i18n="skillEyebrow">03 — SKILLS</span>
+        <h2 class="sec-title" data-i18n="skillTitle">编程技能</h2>
+        <p class="sec-sub" data-i18n="skillSub"></p>
+      </aside>
+      <div class="section-main">
+        <div class="skill-list reveal" id="skillList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 兴趣与作品 ===================== -->
+  <section id="interests" class="section">
+    <div class="wrap section-grid">
+      <aside class="section-aside reveal">
+        <span class="sec-num" data-i18n="intEyebrow">04 — INTERESTS</span>
+        <h2 class="sec-title" data-i18n="intTitle">兴趣与作品</h2>
+        <p class="sec-sub" data-i18n="intSub"></p>
+      </aside>
+      <div class="section-main">
+        <div class="filter-bar reveal" id="interestFilters"></div>
+        <div class="cards" id="interestList"></div>
+
+        <h3 class="sub-title reveal" data-i18n="worksTitle">作品集</h3>
+        <div class="work-list" id="workList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 趣闻录 ===================== -->
+  <section id="notes" class="section">
+    <div class="wrap section-grid">
+      <aside class="section-aside reveal">
+        <span class="sec-num" data-i18n="noteEyebrow">05 — ANECDOTES</span>
+        <h2 class="sec-title" data-i18n="noteTitle">趣闻录</h2>
+        <p class="sec-sub" data-i18n="noteSub"></p>
+      </aside>
+      <div class="section-main">
+        <div class="notes" id="noteList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 联系我 ===================== -->
+  <section id="contact" class="section">
+    <div class="wrap section-grid">
+      <aside class="section-aside reveal">
+        <span class="sec-num" data-i18n="ctEyebrow">06 — CONTACT</span>
+        <h2 class="sec-title" data-i18n="ctTitle">联系我</h2>
+        <p class="sec-sub" data-i18n="ctSub"></p>
+      </aside>
+      <div class="section-main">
+        <div class="contact-card reveal">
+          <span class="label" data-i18n="ctEmailLabel">电子邮件</span>
+          <a class="mail-value" id="mailValue" href="#">—</a>
+          <div class="contact-actions">
+            <a class="btn btn-primary" id="mailBtn" href="#" data-i18n="ctSend">发邮件给我</a>
+            <button class="btn btn-ghost" id="copyBtn" type="button" data-i18n="ctCopy">复制邮箱</button>
+          </div>
+        </div>
+
+        <div class="links-block reveal">
+          <span class="label" data-i18n="ctLinks">在GitHub上找我</span>
+          <div class="links" id="friendLinks"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="footer-wish" id="footerWish"></p>
+    <p class="footer-copy" id="footerCopy"></p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="data/site.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/markdown.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
