@@ -2,7 +2,7 @@
 [English](#a-bosom-friend-afar-brings-a-distant-land-near)
 
 ---
-> 本分支是目前的稳定分支
+> 本分支停止更新
 ## 海内存知己，天涯若比邻。
 
 # 你好呀！👋
@@ -46,7 +46,7 @@ Kotlin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▇▇▇▇ 4
 
 ---
 
-> This is the current stable branch.
+> This branch is stop update now
 ## A bosom friend afar brings a distant land near.
 
 # Hello there! 👋  
