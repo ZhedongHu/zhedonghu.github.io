@@ -38,10 +38,6 @@
   --aside-w: 220px;         /* 区块左侧标题栏宽度 */
   --gap-col: 56px;          /* 两栏间距 */
 
-  /* 仅使用通用字体族，不指定任何具体字体，规避字体授权风险 */
-  --font: system-ui, sans-serif;
-  --mono: ui-monospace, monospace;
-
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
