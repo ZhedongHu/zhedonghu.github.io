@@ -19,7 +19,7 @@ window.SITE_DATA = {
     id: "v2-launch",                 // 改这个字符串 = 推送一条新横幅
     dismissible: true,               // 是否显示右侧 × 关闭按钮
     tag: { zh: "新版本", en: "NEW" }, // 左侧小标签，留空 "" 则不显示
-    text: { zh: "全新版本网站发布！欢迎体验", en: "Brand-new website is live! Take a look" },
+    text: { zh: "全新版本个人主页发布！欢迎体验", en: "Brand-new website is live! Take a look" },
     /*link: {                          // 不需要链接就整段删掉，或把 url 留空
       text: { zh: "查看更新", en: "What's new" },
       url: "zhedonghu.github.io",
