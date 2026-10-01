@@ -22,7 +22,7 @@ window.SITE_DATA = {
     text: { zh: "全新版本网站发布！欢迎体验", en: "Brand-new website is live! Take a look" },
     link: {                          // 不需要链接就整段删掉，或把 url 留空
       text: { zh: "查看更新", en: "What's new" },
-      url: "https://zhedonghu.github.io",
+      url: "",
       newTab: true
     }
   },
