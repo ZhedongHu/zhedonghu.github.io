@@ -47,7 +47,7 @@ window.SITE_DATA = {
     // ★ 真实学校（来自 GitHub 个人主页 / README）
     school:      { zh: "杭州师范大学东城中学", en: "Hangzhou Dongcheng Middle School" },
     // ★ 邮箱
-    email:       "kikinew2025@outlook.com",
+    email:       "ZhedongHu@hotmail.com",
     // ★ 真实座右铭（来自 README 个人信息）
     motto:       { zh: "变化是唯一的永恒", en: "Change is the only constant" },
     welcome:     { zh: "幸会👏！欢迎来到我的个人主页",
