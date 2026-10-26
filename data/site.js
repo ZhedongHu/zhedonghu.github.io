@@ -7,8 +7,8 @@
    2. 不需要翻译的字段（邮箱、年份、链接、emoji）直接写字符串。
    3. 数组里多写/少写一项都没问题，页面会自动渲染，不用改 HTML。
 
-   想加一篇笔记？在 posts 数组里追加一项即可。
    想加一个作品？在 works 数组里追加一项即可。
+   想指向自己的博客？改 blog 里的 url / title / desc 即可。
    ========================================================================== */
 
 window.SITE_DATA = {
@@ -19,7 +19,7 @@ window.SITE_DATA = {
     id: "v2-launch",                 // 改这个字符串 = 推送一条新横幅
     dismissible: true,               // 是否显示右侧 × 关闭按钮
     tag: { zh: "新版本", en: "NEW" }, // 左侧小标签，留空 "" 则不显示
-    text: { zh: "全新版本网站发布！欢迎体验", en: "Brand-new website is live! Take a look" },
+    text: { zh: "全新版本个人主页发布！欢迎体验", en: "Brand-new website is live! Take a look" },
     /*link: {                          // 不需要链接就整段删掉，或把 url 留空
       text: { zh: "查看更新", en: "What's new" },
       url: "zhedonghu.github.io",
@@ -47,7 +47,7 @@ window.SITE_DATA = {
     // ★ 真实学校（来自 GitHub 个人主页 / README）
     school:      { zh: "杭州师范大学东城中学", en: "Hangzhou Dongcheng Middle School" },
     // ★ 邮箱
-    email:       "kikinew2025@outlook.com",
+    email:       "ZhedongHu@hotmail.com",
     // ★ 真实座右铭（来自 README 个人信息）
     motto:       { zh: "变化是唯一的永恒", en: "Change is the only constant" },
     welcome:     { zh: "幸会👏！欢迎来到我的个人主页",
@@ -139,65 +139,60 @@ window.SITE_DATA = {
   ],
 
   /* -------------------------------------------------------------------- 作品集 */
+  // image 为全屏背景图（本地路径或外链均可），主题化抽象图，无文字/数字/商标；
+  // 想换成真实截图？把 image 改成对应图片路径即可。未填写时自动使用品牌渐变背景。
   works: [
     { emoji: "🌐", title: { zh: "个人主页", en: "Personal Homepage" },
       desc:  { zh: "你现在看到的这个网站：蓝色科技风、中英文双语、可轻松扩展的项目列表。",
                en: "The website you are looking at now: blue tech style, bilingual, and an easily extensible project list." },
+      image: "assets/img/works/work-personal.svg",
       link: "https://zhedonghu.github.io/", tags: ["HTML", "CSS", "JavaScript"] },
-    { emoji: "📓", title: { zh: "日记仓库", en: "Diary" },
-      desc:  { zh: "一个日记仓库，配有一个非常简陋的网页。",
-               en: "A diary repository with a very rudimentary web interface." },
-      link: "https://zhedonghu.github.io/Diary", tags: ["HTML", "Markdown", "Diary"] },
     { emoji: "👤", title: { zh: "关于我", en: "About me" },
       desc:  { zh: "这是我的自我介绍。",
                en: "Something about me." },
+      image: "assets/img/works/work-about.svg",
       link: "https://github.com/ZhedongHu/ZhedongHu/blob/main/README.md", tags: ["Markdown"] },
     { emoji: "🎮", title: { zh: "2048 小游戏", en: "2048 Game" },
       desc:  { zh: "一个经典的数字消除游戏。",
                en: "A classic number-merging puzzle game." },
+      image: "assets/img/works/work-2048.svg",
       link: "https://zhedonghu.github.io/2048", tags: ["HTML", "CSS", "JavaScript"] },
     { emoji: "🔢", title: { zh: "猜数字游戏", en: "Guess the Number" },
       desc:  { zh: "一个极简猜数字游戏。",
                en: "A minimal guess-the-number game." },
+      image: "assets/img/works/work-guess.svg",
       link: "https://zhedonghu.github.io/guess-number", tags: ["HTML", "CSS", "JavaScript"] },
     { emoji: "💻", title: { zh: "计算机健康状况检查", en: "Computer Health Check" },
       desc:  { zh: "仅供娱乐，没有任何实际意义的计算机健康状况检查。",
                en: "For entertainment only — a computer health check with no real meaning." },
+      image: "assets/img/works/work-health.svg",
       link: "https://github.com/ZhedongHu/computer-health-check", tags: ["C"] },
     { emoji: "🏠", title: { zh: "浏览器主页", en: "Browser Homepage" },
       desc:  { zh: "一个简洁的浏览器主页。",
                en: "A clean, simple browser homepage." },
+      image: "assets/img/works/work-browser.svg",
       link: "https://zhedonghu.github.io/simple-browser-homepage", tags: ["HTML", "CSS", "JavaScript"] },
     { emoji: "🐍", title: { zh: "贪吃蛇", en: "Snake Game" },
       desc:  { zh: "经典贪吃蛇游戏。",
                en: "The classic Snake game." },
+      image: "assets/img/works/work-snake.svg",
       link: "https://zhedonghu.github.io/snake/", tags: ["HTML", "CSS", "JavaScript"] },
     { emoji: "🎨", title: { zh: "字符画设计器", en: "AICILL Art" },
       desc:  { zh: "你可以通过涂抹色块的方式，制作独一无二的字符画。",
                en: "Make unique ASCII art by painting color blocks." },
+      image: "assets/img/works/work-ascii.svg",
       link: "https://zhedonghu.github.io/AICILL-art", tags: ["HTML", "CSS", "JavaScript", "Art"] }
   ],
 
-  /* ------------------------------------------------------------------ 趣闻录 */
-  // body 支持 Markdown（标题 / 列表 / 代码 / 引用 / 加粗 / 链接 都可以）
-  posts: [
-    {
-      id: "national-day",
-      date: "2026-10-1",
-      title: { zh: "热烈庆祝中华人民共和国成立77周年！", en: "Warmly celebrate the 77th anniversary of the founding of the People's Republic of China!" },
-      summary: { zh: "盛世华诞，举国同庆！",
-                 en: "A glorious birthday in a flourishing era — the whole nation celebrates as one!" },
-      tags: ["国庆"],
-      body: {
-        zh: [
-          "# 热烈庆祝中华人民共和国成立77周年！"
-        ].join("\n"),
-        en: [
-          "# Warmly celebrate the 77th anniversary of the founding of the People's Republic of China!"
-        ].join("\n")
-      }
-    },
-  ],
+  /* ------------------------------------------------------------------ 我的博客 */
+  // 一节指向外部博客的长条卡片，改 url / title / desc 即可
+  blog: {
+    url: "https://zhedonghu.github.io/blog",
+    icon: "📝",
+    title: { zh: "我的博客", en: "My Blog" },
+    desc:  { zh: "这里记录着我的学习、生活和一些奇思妙想，欢迎随时来逛逛。",
+             en: "Notes on what I'm learning and building — drop by anytime." }
+  },
   /* ---------------------------------------------------------------- 在GitHub上找我 */
   links: [
     { name: "GitHub", url: "https://github.com/ZhedongHu/" }

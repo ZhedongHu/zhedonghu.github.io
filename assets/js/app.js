@@ -372,63 +372,91 @@
   }
 
   /* ---------------------------------------------------------------------- 作品 */
+  // 每个作品 = 一屏全屏背景图 + 玻璃拟态文字卡片（沿用站点设计语言）
+  // 背景优先用 w.image；未提供时使用与站点 bg-glow 同色调的品牌渐变回退
+  var WORK_FALLBACK_BG = [
+    "radial-gradient(circle at 16% 22%, rgba(76,201,240,.5), transparent 60%), radial-gradient(circle at 86% 84%, rgba(123,97,255,.42), transparent 60%)",
+    "radial-gradient(circle at 22% 72%, rgba(123,97,255,.5), transparent 60%), radial-gradient(circle at 90% 16%, rgba(52,211,153,.4), transparent 60%)",
+    "radial-gradient(circle at 15% 85%, rgba(52,211,153,.45), transparent 60%), radial-gradient(circle at 90% 22%, rgba(76,201,240,.5), transparent 60%)",
+    "radial-gradient(circle at 50% 40%, rgba(76,201,240,.5), transparent 62%), radial-gradient(circle at 52% 102%, rgba(123,97,255,.4), transparent 60%)",
+    "radial-gradient(circle at 50% 10%, rgba(123,97,255,.5), transparent 60%), radial-gradient(circle at 92% 90%, rgba(76,201,240,.42), transparent 60%)",
+    "radial-gradient(circle at 86% 50%, rgba(52,211,153,.45), transparent 60%), radial-gradient(circle at 10% 22%, rgba(76,201,240,.45), transparent 60%)",
+    "radial-gradient(circle at 12% 90%, rgba(76,201,240,.45), transparent 60%), radial-gradient(circle at 90% 12%, rgba(123,97,255,.45), transparent 60%)",
+    "radial-gradient(circle at 50% 50%, rgba(123,97,255,.45), transparent 60%), radial-gradient(circle at 100% 100%, rgba(52,211,153,.4), transparent 60%)",
+    "radial-gradient(circle at 90% 85%, rgba(76,201,240,.45), transparent 60%), radial-gradient(circle at 10% 15%, rgba(52,211,153,.45), transparent 60%)"
+  ];
+
   function renderWorks() {
     var box = $("#workList");
     if (!box || !D.works) return;
+    var total = D.works.length;
+    box.innerHTML = D.works.map(function (w, i) {
+      var hasLink = w.link && /^(https?:|mailto:)/i.test(w.link);
+      var bg = w.image
+        ? "background-image:url('" + esc(w.image) + "')"
+        : "background-image:" + WORK_FALLBACK_BG[i % WORK_FALLBACK_BG.length];
+      var num = (window.I18N.lang === "zh" ? "作品 " : "WORK ") +
+                String(i + 1).padStart(2, "0") + " / " + String(total).padStart(2, "0");
+      return '<article class="works-screen">' +
+        '<div class="works-bg" style="' + bg + '"></div>' +
+        '<div class="works-scrim"></div>' +
+        '<div class="works-inner"><div class="wrap">' +
+          '<div class="works-card reveal">' +
+            '<span class="works-index">' + esc(num) + "</span>" +
+            (w.emoji ? '<div class="works-emoji">' + esc(w.emoji) + "</div>" : "") +
+            '<h3 class="works-title">' + esc(pick(w.title)) + "</h3>" +
+            '<p class="works-desc">' + esc(pick(w.desc)) + "</p>" +
+            ((w.tags || []).length ? '<div class="works-tags">' + w.tags.map(function (g) {
+              return '<span class="tag">' + esc(g) + "</span>";
+            }).join("") + "</div>" : "") +
+            (hasLink ? '<a class="wc-link" href="' + esc(w.link) + '" target="_blank" rel="noopener">' +
+              (window.I18N.lang === "zh" ? "查看" : "View") + " <span>→</span></a>" : "") +
+          "</div>" +
+        "</div></div>" +
+      "</article>";
+    }).join("");
+  }
+
+  /* ---------------------------------------------------------------------- 全部作品（卡片式总览） */
+  // 与全屏作品流同源数据，但以紧凑卡片网格呈现：缩略图 + 标题 + 简介 + 标签 + 链接
+  function renderAllWorks() {
+    var box = $("#allWorksList");
+    if (!box || !D.works) return;
     box.innerHTML = D.works.map(function (w) {
       var hasLink = w.link && /^(https?:|mailto:)/i.test(w.link);
-      return '<article class="wc-item reveal">' +
-        '<div class="wc-emoji">' + esc(w.emoji || "📦") + "</div>" +
-        "<div>" +
-          '<h4 class="wc-title">' + esc(pick(w.title)) + "</h4>" +
-          '<p class="wc-desc">' + esc(pick(w.desc)) + "</p>" +
-          ((w.tags || []).length ? '<div class="wc-tags">' + w.tags.map(function (g) {
+      var thumb = w.image ? "background-image:url('" + esc(w.image) + "')" : "";
+      return '<article class="card aw-card reveal">' +
+        '<div class="aw-thumb' + (w.image ? "" : " aw-thumb--fallback") + '" style="' + thumb + '"></div>' +
+        '<div class="aw-body">' +
+          (w.emoji ? '<div class="aw-emoji">' + esc(w.emoji) + "</div>" : "") +
+          '<h3 class="aw-title">' + esc(pick(w.title)) + "</h3>" +
+          '<p class="aw-desc">' + esc(pick(w.desc)) + "</p>" +
+          ((w.tags || []).length ? '<div class="aw-tags">' + w.tags.map(function (g) {
             return '<span class="tag">' + esc(g) + "</span>";
           }).join("") + "</div>" : "") +
-        "</div>" +
-        '<div class="wc-side">' +
           (hasLink ? '<a class="wc-link" href="' + esc(w.link) + '" target="_blank" rel="noopener">' +
             (window.I18N.lang === "zh" ? "查看" : "View") + " <span>→</span></a>" : "") +
-        "</div></article>";
+        "</div>" +
+      "</article>";
     }).join("");
   }
 
-  /* ---------------------------------------------------------------------- 笔记 */
-  function formatDate(str) {
-    if (!str) return "";
-    var parts = String(str).split("-");
-    if (parts.length !== 3) return str;
-    var y = parts[0], m = Number(parts[1]), d = Number(parts[2]);
-    if (window.I18N.lang === "zh") return y + "." + (m < 10 ? "0" + m : m) + "." + (d < 10 ? "0" + d : d);
-    var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return (MON[m - 1] || "") + " " + d + ", " + y;
-  }
-
-  function renderNotes() {
-    var box = $("#noteList");
-    if (!box || !D.posts) return;
-    box.innerHTML = D.posts.map(function (p) {
-      return '<article class="note-item reveal">' +
-        '<button class="note-head" type="button" aria-expanded="false">' +
-          '<span class="note-date">' + esc(formatDate(p.date)) + "</span>" +
-          '<span class="note-title">' + esc(pick(p.title)) + "</span>" +
-          ((p.tags || []).length ? '<span class="note-tags">' + p.tags.map(function (g) {
-            return '<span class="tag">' + esc(g) + "</span>";
-          }).join("") + "</span>" : "<span></span>") +
-          '<span class="note-arrow">▾</span>' +
-        "</button>" +
-        '<p class="note-summary">' + esc(pick(p.summary)) + "</p>" +
-        '<div class="note-body md">' + window.mdToHtml(pick(p.body || {})) + "</div>" +
-        "</article>";
-    }).join("");
-
-    box.querySelectorAll(".note-head").forEach(function (head) {
-      head.addEventListener("click", function () {
-        var item = head.closest(".note-item");
-        var open = item.classList.toggle("open");
-        head.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-    });
+  /* ---------------------------------------------------------------------- 我的博客（长条卡片） */
+  function renderBlog() {
+    var box = $("#blogCard");
+    var b = D.blog || {};
+    if (!box) return;
+    if (!b.url) { box.innerHTML = ""; return; }
+    box.innerHTML =
+      '<article class="blog-card reveal">' +
+        (b.icon ? '<div class="blog-icon">' + esc(b.icon) + "</div>" : "") +
+        '<div class="blog-text">' +
+          '<h3 class="blog-title">' + esc(pick(b.title) || (window.I18N.lang === "zh" ? "我的博客" : "My Blog")) + "</h3>" +
+          '<p class="blog-desc">' + esc(pick(b.desc) || "") + "</p>" +
+        "</div>" +
+        '<a class="blog-link" href="' + esc(b.url) + '" target="_blank" rel="noopener">' +
+          (window.I18N.lang === "zh" ? "前往博客" : "Visit blog") + " <span>→</span></a>" +
+      "</article>";
   }
 
   /* ---------------------------------------------------------------- 联系与链接 */
@@ -570,7 +598,8 @@
     renderSkills();
     renderInterests();
     renderWorks();
-    renderNotes();
+    renderAllWorks();
+    renderBlog();
     renderContact();
     syncLangSwitch();
     observeReveals();
