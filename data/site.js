@@ -15,7 +15,7 @@ window.SITE_DATA = {
 
   /* -------------------------------------------------------------- 顶部临时横幅*/ 
   banner: {
-    enabled: true,
+    enabled: false,
     id: "v2-launch",                 // 改这个字符串 = 推送一条新横幅
     dismissible: true,               // 是否显示右侧 × 关闭按钮
     tag: { zh: "新版本", en: "NEW" }, // 左侧小标签，留空 "" 则不显示
@@ -42,7 +42,7 @@ window.SITE_DATA = {
   profile: {
     name:        { zh: "胡哲栋", en: "Zhedong Hu" },
     nameLatin:   "Zhedong Hu",
-    role:        { zh: "七年级 · 探索者", en: "7th Grader · Explorer" },
+    role:        { zh: "七年级 · 写作业家、考试家、晚自习家", en: "7th Grader · an uncelebrated master of homework, exams, and evening study sessions" },
     location:    { zh: "中国 · 杭州", en: "Hangzhou, China" },
     // ★ 真实学校（来自 GitHub 个人主页 / README）
     school:      { zh: "杭州师范大学东城中学", en: "Hangzhou Dongcheng Middle School" },
@@ -50,12 +50,12 @@ window.SITE_DATA = {
     email:       "ZhedongHu@hotmail.com",
     // ★ 真实座右铭（来自 README 个人信息）
     motto:       { zh: "变化是唯一的永恒", en: "Change is the only constant" },
-    welcome:     { zh: "幸会👏！欢迎来到我的个人主页",
-                   en: "Nice to meet you 👏 Welcome to my homepage" },
+    welcome:     { zh: "幸会👏！我是不著名不伟大的写作业家、考试家、晚自习家！",
+                   en: "Nice to meet you 👏 I'm an uncelebrated master of homework, exams, and evening study sessions!" },
     // 以下 heroDesc / wish 与真实站点首页文案一致
-    heroDesc:    { zh: "星辰大海，逐梦前行。七年级的故事刚刚开始，这是一段全新的旅程，我将全力以赴。",
-                   en: "To the stars and the sea, chasing my dreams. The story of Grade 7 is  begin — a brand-new journey I will give my all to." },
-    wish:        { zh: "祝所有同学：新学期，身体健康，学业有成！",
+    heroDesc:    { zh: "路漫漫其修远兮，吾将上下而求索！",
+                   en: "The way ahead is long and has no ending; yet high and low I'll search with my will unbending." },
+    wish:        { zh: "祝所有同学：身体健康，学业有成！",
                    en: "To all my classmates: a healthy and successful new semester!" },
     // ★ 真实自我介绍（来自 README / 个人主页）
     about: [
