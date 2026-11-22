@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于 zhedonghu.github.io 大多数界面关闭的一些说明</title>
+<script>
+  /* 决定初始语言：设备语言不是「简体中文（中国）」时默认使用英文；
+     用户手动选择过语言时，记住其选择。此脚本放在 head 中执行以避免闪烁。 */
+  (function () {
+    var KEY = 'zdh-doc-lang';
+    var TITLE_ZH = '关于 zhedonghu.github.io 大多数界面关闭的一些说明';
+    var TITLE_EN = 'Some Notes on the Closure of Most Pages on zhedonghu.github.io';
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    var nav = (navigator.language || '').toLowerCase();
+    var lang = (saved === 'zh-CN' || saved === 'en')
+      ? saved
+      : (/^zh(-hans)?-cn$/.test(nav) ? 'zh-CN' : 'en');
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang;
+    document.title = lang === 'en' ? TITLE_EN : TITLE_ZH;
+  })();
+</script>
+<style>
+  :root {
+    --accent: #1890FF;
+    --ink: #000;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-family: serif;
+  }
+
+  body {
+    padding: 24px 16px;
+    color: var(--ink);
+  }
+
+  /* 顶部工具栏：与正文同宽 */
+  .topbar {
+    max-width: 760px;
+    margin: 0 auto 8px;
+    padding: 0 8px;
+  }
+
+  /* 语言切换：分段按钮 */
+  .lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .lang-btn {
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+    border: 1px solid rgba(24, 144, 255, 0.35);
+    background: #fff;
+    color: var(--accent);
+    padding: 7px 16px;
+    border-radius: 999px;
+    transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .lang-btn:hover { background: rgba(24, 144, 255, 0.08); }
+
+  .lang-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  html[data-lang="zh-CN"] .lang-btn[data-lang="zh-CN"],
+  html[data-lang="en"] .lang-btn[data-lang="en"] {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+  }
+
+  /* 人工智能翻译提示横幅：仅在英文版显示 */
+  .banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #FFF7E6;
+    border: 1px solid #FFE7BA;
+    color: #874D00;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .banner-icon {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  html[data-lang="zh-CN"] .banner { display: none; }
+
+  /* 居中正文容器 */
+  .doc {
+    max-width: 760px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+  }
+
+  html[data-lang="zh-CN"] article[lang="en"],
+  html[data-lang="en"] article[lang="zh-CN"] { display: none; }
+
+  .doc img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 带方括号的标题 */
+  .doc h1 {
+    margin: 40px 8px 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .doc h1 .bracket {
+    color: var(--accent);
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .doc h1 .bracket.close {
+    margin-right: 0;
+    margin-left: 5px;
+  }
+
+  /* 正文段落：首行缩进 2 字符 */
+  .doc p {
+    margin: 16px 0;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 27.2px;
+    letter-spacing: 0;
+    text-indent: 2em;
+  }
+
+  /* 此致与署名不缩进 */
+  .doc p.no-indent {
+    text-indent: 0;
+  }
+
+  /* 蓝色高亮强调（马克笔底部铺色效果） */
+  .doc .mark {
+    color: var(--accent);
+    font-weight: bold;
+    padding: 0 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent 60%,
+      rgba(24, 144, 255, 0.18) 60%
+    );
+  }
+
+  /* 文档内链接 */
+  .doc a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    word-break: break-all;
+  }
+
+  .doc em {
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="lang-switch" role="group" aria-label="Language / 语言切换">
+    <button type="button" class="lang-btn" data-lang="zh-CN">中文</button>
+    <button type="button" class="lang-btn" data-lang="en">English</button>
+  </div>
+  <div class="banner" id="banner" role="note">
+    <span class="banner-icon" aria-hidden="true">i</span>
+    <span>This English version was translated using artificial intelligence and may contain errors.</span>
+  </div>
+</div>
+
+<article class="doc" lang="zh-CN">
+  <h1><span class="bracket">[</span>关于 zhedonghu.github.io 大多数界面关闭的一些说明<span class="bracket close">]</span></h1>
+
+  <p class="no-indent">致访问者：</p>
+
+  <p>很抱歉，今天我决定<span class="mark">停止 zhedonghu.github.io 大多数界面的公开访问</span>。</p>
+
+  <p>zhedonghu.github.io 有一些比较幽默诙谐的表达，还部署着我随手 Vibe Coding 出的几个简单小游戏。这可能会偏离技术研究本身，影响到其他同学的学习。</p>
+
+  <p>由于少部分界面依然允许公开访问，我制作了一个<em><span class="mark"><a href="https://zhedonghu.github.io/list/" target="_blank" rel="noopener">列表&nbsp;</a></span></em>，以展示哪些界面依然可访问，不在列表内的界面均已经停止公开访问。</p>
+
+  <p>被关闭的界面尚不确定是否会恢复公开访问。</p>
+
+  <p>当然，今后我还会以丝毫不减的热情，继续参与开源项目。截至本文书写时，我还在做一个新的作品。</p>
+
+  <p><span class="mark">感谢理解！</span></p>
+
+  <p class="no-indent">此致</p>
+
+  <p class="no-indent">胡哲栋</p>
+</article>
+
+<article class="doc" lang="en">
+  <h1><span class="bracket">[</span>Some Notes on the Closure of Most Pages on zhedonghu.github.io<span class="bracket close">]</span></h1>
+
+  <p class="no-indent">To visitors:</p>
+
+  <p>I am sorry, but today I have decided to <span class="mark">stop public access to most pages on zhedonghu.github.io</span>.</p>
+
+  <p>zhedonghu.github.io contains some rather humorous and witty expressions, and also hosts a few simple mini-games that I casually made with vibe coding. This may stray from technical research itself and affect other students' learning.</p>
+
+  <p>Since a small number of pages are still publicly accessible, I have created a <em><span class="mark"><a href="https://zhedonghu.github.io/list/" target="_blank" rel="noopener">list&nbsp;</a></span></em> to show which pages remain available; any page not on the list has stopped being publicly accessible.</p>
+
+  <p>It is still uncertain whether the closed pages will be made public again.</p>
+
+  <p>Of course, I will continue to take part in open-source projects with undiminished enthusiasm. As of this writing, I am still working on a new project.</p>
+
+  <p><span class="mark">Thank you for your understanding!</span></p>
+
+  <p class="no-indent">Sincerely,</p>
+
+  <p class="no-indent">Zhedong Hu</p>
+</article>
+
+<script>
+  (function () {
+    var KEY = 'zdh-doc-lang';
+    var TITLE_ZH = '关于 zhedonghu.github.io 大多数界面关闭的一些说明';
+    var TITLE_EN = 'Some Notes on the Closure of Most Pages on zhedonghu.github.io';
+    var buttons = document.querySelectorAll('.lang-btn');
+
+    function setLang(lang) {
+      document.documentElement.dataset.lang = lang;
+      document.documentElement.lang = lang;
+      document.title = lang === 'en' ? TITLE_EN : TITLE_ZH;
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
+      });
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.lang); });
+    });
+
+    var current = document.documentElement.dataset.lang;
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === current ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
+</html>
